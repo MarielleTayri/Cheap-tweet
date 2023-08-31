@@ -1,5 +1,11 @@
+import { useState } from "react";
 import { Tweet } from "./Tweet";
+
 function App() {
+  let [tweets, setTweets] = useState();
+  let [username, setUsername] = useState();
+
+
   return (
     <div>
       <p>Cheap Twitter</p>
