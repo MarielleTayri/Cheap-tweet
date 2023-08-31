@@ -31,6 +31,9 @@ const DEFAULT_TWEET = [
 function App() {
   const [tweets, setTweets] = useState(DEFAULT_TWEET);
 
+  const onDelete = (tweetId) => {
+    setTweets(curr => curr.filter((tweet) => tweet.id !==tweetId));
+  };
 
   return (
     <div>
@@ -44,7 +47,7 @@ function App() {
       content={tweet.content}
       like={tweet.like}
       onDelete= {(id) => {
-        console.log("DELETE",id)
+        onDelete(id);
       }}
       />
     );
