@@ -31,7 +31,11 @@ const DEFAULT_TWEET = [
 function App() {
   let [tweets, setTweets] = useState(DEFAULT_TWEET);
 
-  const tweetsList = tweets.map((tweet) => {
+
+  return (
+    <div>
+      <div className="tweet-container">
+        {tweets.map((tweet) => {
     return (
       <Tweet
       key= {tweet.id}
@@ -40,12 +44,8 @@ function App() {
       like={tweet.like}
       />
     );
-  });
-  console.log(tweetsList);
-
-  return (
-    <div>
-      <div className="tweet-container">{tweetsList}</div>
+  })}
+      </div>
     </div>
   );
 }
