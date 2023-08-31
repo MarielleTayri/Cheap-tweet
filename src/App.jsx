@@ -45,12 +45,25 @@ const handleSubmit = (event) => {
     like:0,
   };
 
-  setTweets([...tweets, newTweet]);
-};
+    addTweet(newTweet);
+  };
+
+  const addTweet = (tweet) => {
+    setTweets([...tweets, newTweet]);
+  };
 
   const onDelete = (tweetId) => {
     setTweets(curr => curr.filter((tweet) => tweet.id !==tweetId));
+    likedTweet.like +=1;
   };
+
+  const onLike = (tweetId) => {
+    setTweets(curr => {
+      const copyTweet = [...curr];
+
+      const likedTweet = copyTweet.find(tweet => tweet.id === tweetId);
+    })
+  }
 
   return (
     <div>
@@ -65,19 +78,22 @@ const handleSubmit = (event) => {
         {tweets.map((tweet) => {
     return (
       <Tweet
-      key= {tweet.id}
-      id= {tweet.id}
-      name={tweet.name}
-      content={tweet.content}
-      like={tweet.like}
-      onDelete= {(id) => {
-        onDelete(id);
-      }}
+        key= {tweet.id}
+        id= {tweet.id}
+        name={tweet.name}
+        content={tweet.content}
+        like={tweet.like}
+        onDelete= {(id) => {
+          onDelete(id);
+        }}
+          onLike={(id) => {
+            onLike(id)
+          }}
       />
     );
   })}
-      </div>
-    </div>
+</div>
+</div>
   );
 }
 export default App;
