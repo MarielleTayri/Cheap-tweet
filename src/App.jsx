@@ -31,9 +31,22 @@ const DEFAULT_TWEET = [
 function App() {
   const [tweets, setTweets] = useState(DEFAULT_TWEET);
 
-const handleSubmit = () => {
+const handleSubmit = (event) => {
+  event.preventDefault();
+  console.log(event);
 
-}
+  const name = event.target.name.value;
+  const content = event.target.content.value;
+
+  const newTweet = {
+    id: tweets[tweets.length -1]?.id + 1 ?? 0,
+    name,
+    content,
+    like:0,
+  };
+
+  setTweets([...tweets, newTweet]);
+};
 
   const onDelete = (tweetId) => {
     setTweets(curr => curr.filter((tweet) => tweet.id !==tweetId));
