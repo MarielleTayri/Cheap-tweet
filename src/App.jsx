@@ -29,7 +29,7 @@ const DEFAULT_TWEET = [
 ];
 
 function App() {
-  let [tweets, setTweets] = useState(DEFAULT_TWEET);
+  const [tweets, setTweets] = useState(DEFAULT_TWEET);
 
 
   return (
@@ -39,9 +39,13 @@ function App() {
     return (
       <Tweet
       key= {tweet.id}
+      id= {tweet.id}
       name={tweet.name}
       content={tweet.content}
       like={tweet.like}
+      onDelete= {(id) => {
+        console.log("DELETE",id)
+      }}
       />
     );
   })}
