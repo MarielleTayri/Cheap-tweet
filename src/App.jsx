@@ -41,8 +41,8 @@ function App() {
         <h4>New tweet</h4>
         <input type="text" name="name" />
         <input type="content" name="content" />
-
       </form>
+
       <div className="tweet-container">
         {tweets.map((tweet) => {
     return (
